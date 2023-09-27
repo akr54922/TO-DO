@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>To-Do Reminder</title>
+    <!-- linking bootstrap-icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <script src="ToDo_JSFile.js"></script>
+    <style>
+          *{
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+            font-family: 'Handlee', cursive;
+        }
+        /* CONTAINER */
+        .container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: #74EBD5;
+            background-image: linear-gradient(90deg, #74EBD5 0%, #9FACE6 100%);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+        }
+        /* todo container */
+        .toDo{
+            width: 30%;
+            height: 80%;
+            background-color: white;
+            border: 2px solid black;
+            border-radius: 23px;
+            display: flex;
+            flex-direction: column;
+        }
+        /* circles */
+        .dots{
+            display: flex;
+            justify-content: center;
+        }
+        .circles{
+            font-size: 30px;
+            margin: 5px;
+            text-shadow: 0px 2px 3px rgba(0,0,0, 0.8);
+        }
+        /* menu */
+        .menu{
+            display: flex;
+            flex-direction: row;
+        }
+        /* menuButtons */
+        #addBtn,#deleteBtn{
+            display: flex;
+            justify-content: center;
+            width: 50%;
+            border: 2px solid black;
+            font-size: 2em;
+            background-color: rgba(0, 0, 0, 0.718);
+            color: rgb(255, 255, 255);
+            align-items: center;
+            margin-top: 2px;
+        }
+        /* darkMode div */
+        #darkToggle{
+            display: flex;
+            justify-content: center;
+            width: 50%;
+            border: 2px solid black;
+            font-size: 2em;
+            background-color: rgba(2, 2, 14, 0.718);
+            color: rgb(255, 248, 150);
+            align-items: center;
+            margin-top: 2px;
+        }
+        /* checkBox */
+        #darkMode{
+            width: 20px;
+            height: 20px;
+            margin-left: 20px;
+        }
+        /* darkMode icon */
+        #darkToggle img{
+            width: 1em;
+            height: 1em;
+        }
+        
+        /* task adding form */
+        #addForm form{
+            background-color: white;
+            display: none;
+            position: absolute;
+            flex-direction: column;
+            margin-left: 5px;
+            padding: 5px;
+            border: 2px solid black;
+            border-radius: 23px;
+            width: 15em;
+            height: 13em;
+
+        }
+        /* submit btn */
+        #addFormBtn{
+            background-color: rgb(110, 1, 1);
+            color: white;
+            margin: 5px;
+        }
+        /* heading */
+        #heading{
+            font-size: 2em;
+            text-align: center;
+            text-decoration: underline;
+        }
+        /* task container */
+        .taskContainer{
+            display: flex;
+            flex-direction: column;
+            border: 2px solid grey;
+            margin: 5px;
+            padding: 5px;
+            height: 75%;
+            width: 98%;
+            border-radius: 16px;
+            overflow-y: scroll;
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- CONTAINER -->
+    <div class="container">
+        <!-- TO DO FORM-->
+        <div class="toDo" id="toDo">
+            <div class="dots" id="dots">
+                <i class="bi bi-circle circles"></i>
+                <i class="bi bi-circle circles"></i>
+                <i class="bi bi-circle circles"></i>
+                <i class="bi bi-circle circles"></i>
+                <i class="bi bi-circle circles"></i>
+                <i class="bi bi-circle circles"></i>
+                <i class="bi bi-circle circles"></i>
+                <i class="bi bi-circle circles"></i>
+                <i class="bi bi-circle circles"></i>
+                <i class="bi bi-circle circles"></i>
+            </div>
+            <hr>
+            <div class="menu">
+                <button id="addBtn" title="Add Tasks" onclick="showForm()"><i class="bi bi-plus-circle"></i></button>
+                <button id="deleteBtn" title="Delete Tasks" onclick="deleteTask()"><i class="bi bi-trash3"></i></button>
+                <!-- <button id="settingBtn" title="Settings" onclick="settings()"><i class="bi bi-gear"></i></button> -->
+                <div  id="darkToggle">
+                    <img src="night-mode.png" alt="Light/Dark" id="icon">
+                    <input type="checkbox" id="darkMode" title="Dark Mode" onchange="toggleDarkMode()">
+                </div>
+            </div>
+            <div id="addForm">
+                <form action="#" id="form">
+                    <label for="date">Enter Date:</label>
+                    <input type="date" id="date">
+                    <label for="time">Enter time:</label>
+                    <input type="time" id="time">
+                    <label for="taskName">Enter Task:</label>
+                    <input type="text" id="taskName">
+                    <button id="addFormBtn" type="submit" onclick="submitForm()">Add Task</button>
+                    <button id="addFormBtn" type="submit" onclick="hideForm()">Cancel</button>
+                </form>
+            </div>
+            <!-- heading -->
+            <p id="heading">Tasks</p>
+            <!-- list of tasks -->
+            <div class="taskContainer" id="taskContainer">
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
